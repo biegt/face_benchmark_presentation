@@ -1,0 +1,84 @@
+/*
+https://github.com/yihui/xaringan/blob/master/inst/rmarkdown/templates/xaringan/resources/rladies.css
+https://alison.rbind.io/post/2017-12-18-r-ladies-presentation-ninja/
+
+h1, h2, h3 {
+  font-weight: normal;
+  color: #562457;
+}
+a, a > code {
+  color: #88398a;
+}
+.remark-code-line-highlighted { background-color: rgba(136, 57, 138, 0.3); }
+
+.inverse {
+  background-color: #562457;
+}
+.inverse, .inverse h1, .inverse h2, .inverse h3, .inverse a, inverse a > code {
+  color: #fff;
+}
+*/
+
+:root{
+--turquoise-opaque: #4cbfac;
+--turquoise-clear: #4cbfac;
+--gray: #D3D3D3;
+--black: #181818;
+--white: #FFFFFF;
+}
+
+mark.turquoise {
+  color:#4cbfac;
+  background: none;
+  font-weight: bold;
+}
+
+a {
+  border-bottom:      3px solid var(--turquoise-clear);
+  line-height:        2rem;
+}
+
+a:hover { border-bottom: none; }
+
+.inverse a {
+  border-bottom:      3px solid var(--white);
+  line-height:        2rem;
+}
+
+
+pre {
+  /*border: 2px solid rgba(204, 189, 204, 0.8); /* code chunk border*/
+  border:             3px solid rgba(136, 57, 138, 0.3);
+  box-shadow:         0px 0px 0px 0px var(--turquoise-clear);
+  padding:            0.1em;                    /* padding between code chunk and border */
+  background:         none !important;
+  overflow-x:         auto;                     /* enable horizontal scrolling with overflow */
+  border-radius:      1px;                      /* modify rounding of corners*/
+}
+
+pre code {
+  background:         none;
+  font-size:          18px !important;
+}
+
+hr {
+  content:            '';
+  display:            block;
+  border:             none;
+  background-color:   var(--turquoise-clear);
+  height:             0.1em;
+}
+
+.inverse hr {
+  content:            '';
+  display:            block;
+  border:             none;
+  background-color:   var(--gray);
+  height:             0.1em;
+}
+
+.overview {
+  color: "#c5ebd5";
+}
+
+.titular .remark-slide-number { display: none; }
