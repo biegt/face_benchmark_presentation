@@ -92,7 +92,7 @@ width="150px"/>-->
 ### `r rmarkdown::metadata$author`
 ### `r rmarkdown::metadata$date`
 
-[`r fontawesome::fa("github")` bit.ly/face-benchmark](https://bit.ly/face-benchmark)
+`made with R and xaringan -` [`r fontawesome::fa("github")` bit.ly/face-benchmark](https://bit.ly/face-benchmark) 
 
 ---
 layout: false
@@ -108,7 +108,6 @@ class: inverse, middle, center
     # (Konzeptgrafiken für Age-Inference und Face Verification)
     # Hintergrundbid anpassen
     # Portraitbild anpassen
-  # Foliencheck und Begriffe hervorheben (fett und in türkis)
   # Vortrag / Folien mit Flora durchgehen
   # Projekt cleanen und auf Github übertragen
 ```
@@ -148,12 +147,12 @@ class: inverse, middle, center
 ---
 ## `r fontawesome::fa("play", fill = "#c5ebd5")` Einführung 
 ----
-* Technischer Fortschritts führt zu immer breiterer Anwendung von Automated Facial Analysis in verschiedensten Domänen `r Cite(bibliography, c("lynch2020face", "shepley2019deep", "norval2017public"))` und Unternehmen haben begonnen Automated Facial Analysis als kommerzielle Services anzubieten `r Cite(bibliography, c("buolamwini2018gender", "amazon_2021_rekog", "face_2021_face", "microsoft_2021_face"))`
+* Technischer Fortschritt führt zu immer breiterer Anwendung von Automated Facial Analysis in verschiedensten Domänen `r Cite(bibliography, c("lynch2020face", "shepley2019deep", "norval2017public"))` und Unternehmen haben begonnen Automated Facial Analysis als <mark class="turquoise">kommerzielle Services</mark> anzubieten `r Cite(bibliography, c("buolamwini2018gender", "amazon_2021_rekog", "face_2021_face", "microsoft_2021_face"))`
 
 
-* Automated Facial Analysis: Überbegriff, der verschiedene computergestützte Abläufe bezeichnet, die die Extraktion von Informationen aus digitalisierten Bildern von Gesichtern und die Identifizierung bedeutsamer Muster daraus beinhalten `r Cite(bibliography,  c("buolamwini2018gender", "cohn2007use"))`
+* <mark class="turquoise">Automated Facial Analysis</mark>: Überbegriff, der verschiedene computergestützte Abläufe bezeichnet, die die Extraktion von Informationen aus digitalisierten Bildern von Gesichtern und die Identifizierung bedeutsamer Muster daraus beinhalten `r Cite(bibliography,  c("buolamwini2018gender", "cohn2007use"))`
 
-* Bisherige Forschung impliziert demografische Biases in kommerziellen Services `r Cite(bibliography, c("buolamwini2018gender", "raji2019actionable", "hupont2019demogpairs", "grother2019face", "howard2020quantifying", "wang2019racial", "robinson2020face", "el2016face"))`, allerdings existieren Forschungslücken:
+* Bisherige Forschung impliziert <mark class="turquoise">demografische Biases</mark> in kommerziellen Services `r Cite(bibliography, c("buolamwini2018gender", "raji2019actionable", "hupont2019demogpairs", "grother2019face", "howard2020quantifying", "wang2019racial", "robinson2020face", "el2016face"))`, allerdings existieren Forschungslücken:
   * Benchmarks kommerzieller Services für Face Verification bei "Unconstrained Images" unter Berücksichtigung von Gender, Race und Age
   * Vergleich kommerzieller Service für Face Verification bei "Unconstrained Images" über die Zeit
   * Benchmarks kommerzieller Services für Face-Based Age Inference unter Berücksichtigung von Gender, Race und Age
@@ -172,16 +171,16 @@ class: inverse, middle, center
 ----
 * Moderne Machine Learning-Applikationen (Automated Facial Analysis und darüber hinaus) basierend oft auf großen Datenmengen `r Cite(bibliography,  c("francois2017deep", "cavazos2020accuracy"))`
 
-* Biases in den Trainingsdaten (und bei denjenigen, die die Modelle entwickeln) können sich in Biases in den jeweiligen Modellen übertragen `r Cite(bibliography, c("maity2020there", "cavazos2020accuracy", "klare2012face", "kortylewski2019analyzing", "zhang2018mitigating"))`
+* <mark class="turquoise">Biases</mark> im Entwicklungsprozess (z.B. nicht ausgewogene Trainingsdaten) können sich in Biases in den jeweiligen Modellen übertragen `r Cite(bibliography, c("maity2020there", "cavazos2020accuracy", "klare2012face", "kortylewski2019analyzing", "zhang2018mitigating"))`
 
-* Folge: Diskrimierung, ungerechte bzw. falsche Entscheidungen (z.B. Kreditvergabe, Strafverfolgung, Berufsförderung)
+* Potentielle Folge: <mark class="turquoise">Diskrimierung, ungerechte bzw. falsche Entscheidungen</mark> (z.B. Kreditvergabe, Strafverfolgung, Berufsförderung)
 
 * Motiviert hierdurch: <mark class="turquoise">Fair Machine Learning</mark> `r Cite(bibliography,  c("belamy19ai"))`
 
 ---
 ## `r fontawesome::fa("book", fill = "#c5ebd5")` Theoretischer Hintergrund - Fairness in Machine Learning 
 ----
-* Verschiedene Klassen von Definitionen für Fairness im Kontext von Machine Learning haben sich etabliert `r Cite(bibliography,  c("corbett2018measure"))`
+* Verschiedene Klassen von <mark class="turquoise">Definitionen für Fairness</mark> im Kontext von Machine Learning haben sich etabliert `r Cite(bibliography,  c("corbett2018measure"))`
 
 * Je nach Kontext weisen die verschiedenen Definitionen von Fairness Limitationen auf `r Cite(bibliography,  c("corbett2018measure"))`
 
@@ -192,7 +191,7 @@ class: inverse, middle, center
 ---
 ## `r fontawesome::fa("book", fill = "#c5ebd5")` Theoretischer Hintergrund - Demographische Dimensionen in Machine Learning 
 ----
-* "Demografic": "eine Teilmenge der Bevölkerung, die ein ähnliches Alter, das gleiche Geschlecht und so weiter hat" `r Cite(bibliography, "oxford_demo")` 
+* <mark class="turquoise">"Demografic"</mark>: "eine Teilmenge der Bevölkerung, die ein ähnliches Alter, das gleiche Geschlecht und so weiter hat" `r Cite(bibliography, "oxford_demo")` 
 
 * Im Kontext von Automated Facial Analysis werden zumeinst drei demografische Dimensionen bezüglich Biases berücksichtigt:
   * <mark class="turquoise">Gender</mark> (Geschlecht): Meist auf binäre Kategorien reduziert (Weiblich, Männlich) `r Cite(bibliography, c("buolamwini2018gender", "robinson2020face", "hupont2019demogpairs", "karkkainen2019fairface", "karkkainen2021fairface", "zhang2017age_utk"))`
@@ -201,16 +200,16 @@ class: inverse, middle, center
   
 * Wahre Komplexität demographischer Dimensionen im Kontext von Machine Learning häufig (noch) nicht abgebildet `r Cite(bibliography, c("buolamwini2018gender"))`
   
-* Intersektionale Betrachtung `r Cite(bibliography, "crenshaw1989demarginalizing")`, besonders wichtig, da Studien gezeigt haben, dass Biases in Bezug auf intersektionale Gruppen erhöht sein können `r Cite(bibliography, c("buolamwini2018gender", "hupont2019demogpairs"))`
+* <mark class="turquoise">Intersektionale Betrachtung</mark> `r Cite(bibliography, "crenshaw1989demarginalizing")`, besonders wichtig, da Studien gezeigt haben, dass Biases in Bezug auf intersektionale Gruppen erhöht sein können `r Cite(bibliography, c("buolamwini2018gender", "hupont2019demogpairs"))`
 
 ---
 ## `r fontawesome::fa("book", fill = "#c5ebd5")` Theoretischer Hintergrund - Kommerzielle Services für Automated Facial Analysis
 ----
 .pull-left[
 
-* Zahlreiche Unternehmen haben begonnen Automated Facial Analysis als kommerzielle Services anzubieten, z.B. Amazon, Microsoft, Megvii, Baidu, Kairos, Lambda Labs `r Cite(bibliography, c("amazon_2021_rekog", "kairos_2021_face", "lambda_2021_face", "face_2021_face", "microsoft_2021_face"))`
+* Zahlreiche Unternehmen haben begonnen Automated Facial Analysis als <mark class="turquoise">kommerzielle Services</mark> anzubieten, z.B. Amazon, Microsoft, Megvii, Baidu, Kairos, Lambda Labs `r Cite(bibliography, c("amazon_2021_rekog", "kairos_2021_face", "lambda_2021_face", "face_2021_face", "microsoft_2021_face"))`
 
-* Zahlreiche Use Cases abgedeckt, z.B.: Face Verification, Gender Classification, Age Inference, Landmark Extraction, Emotion Detection, etc. `r Cite(bibliography, c("amazon_2021_rekog", "kairos_2021_face", "lambda_2021_face", "face_2021_face", "microsoft_2021_face"))`
+* <mark class="turquoise">Zahlreiche Use Cases</mark> abgedeckt, z.B.: Face Verification, Gender Classification, Age Inference, Landmark Extraction, Emotion Detection, etc. `r Cite(bibliography, c("amazon_2021_rekog", "kairos_2021_face", "lambda_2021_face", "face_2021_face", "microsoft_2021_face"))`
 
 * Kommerzielle Services in der Regel als Application Programming Interfaces (APIs) zur Verfügung gestellt, die es Unternehmen und Privatpersonen erlauben, Services für eigene Anwendungen zu nutzen
 ]
@@ -225,15 +224,15 @@ class: inverse, middle, center
 ---
 ## `r fontawesome::fa("book", fill = "#c5ebd5")` Theoretischer Hintergrund - Demographische Biases in Face Verification
 ----
-* Face Verification: Algorithmus, der versucht zu erkennen, ob zwei Bilder eines Gesichts zu derselben Person gehören `r Cite(bibliography, "sun2013hypird")`
+* <mark class="turquoise">Face Verification</mark>: Algorithmus, der versucht zu erkennen, ob zwei Bilder eines Gesichts zu derselben Person gehören `r Cite(bibliography, "sun2013hypird")`
 
-* viele Anwendungsfälle (Strafverfolgung, Authentifzierung, etc.) `r Cite(bibliography, c("interpol_2021", "nyt_2021"))`
+* Hohe Relevanz und viele Anwendungsfälle (Strafverfolgung, Authentifzierung, etc.) `r Cite(bibliography, c("interpol_2021", "nyt_2021"))`
 
-* Studien haben bereits demograpische Biases in (kommerzieller) Gesichtserkennung gefunden `r Cite(bibliography, c("hupont2019demogpairs", "grother2019face", "wang2019racial", "robinson2020face", "el2016face", "cavazos2020accuracy", "krish2019characterizing"))`, z.B.
+* Studien haben bereits <mark class="turquoise">demograpische Biases</mark> in (kommerzieller) Face Verification gefunden `r Cite(bibliography, c("hupont2019demogpairs", "grother2019face", "wang2019racial", "robinson2020face", "el2016face", "cavazos2020accuracy", "krish2019characterizing"))`, z.B.
   * Modelle sind am genauesten bei Males, Caucasians oder Personen mittleren Alters
-  * Modellegenauigkeit ist schlechter bei African und Asian Females oder bei jungen Menschen
+  * Modellgenauigkeit ist schlechter bei African und Asian Females oder bei jungen Menschen
   
-* Trotz zahlreicher Studien: Forschungslücken
+* Trotz zahlreicher Studien: <mark class="turquoise">Forschungslücken</mark>
 
   * Benchmarks kommerzieller Services für Face Verification bei "Unconstrained Images" unter Berücksichtigung von Gender, Race und Age
   * Vergleich kommerzieller Service für Face Verification bei "Unconstrained Images" über die Zeit
@@ -242,13 +241,13 @@ class: inverse, middle, center
 ## `r fontawesome::fa("book", fill = "#c5ebd5")` Theoretischer Hintergrund - Demographische Biases in Face-Based Age Inference
 ----
 
-* Face-Based Age Inference: Schätzung des Alters einer Person auf der Grundlage eines Bildes ihres Gesichts `r Cite(bibliography, c("deng2021multifeature"))`
+* <mark class="turquoise">Face-Based Age Inference</mark>: Schätzung des Alters einer Person auf der Grundlage eines Bildes ihres Gesichts `r Cite(bibliography, c("deng2021multifeature"))`
 
 * Viele aktuelle Forschungsarbeiten beschäftigen sich mit der Verbeserung von Face-Based Age Inference `r Cite(bibliography, c("akhand2020human", "karkkainen2019fairface", "karkkainen2021fairface", "guehairia2020feature", "rahman2020human", "bekhouche2020comparative", "gong2020jointly", "agbo2019face"))`
 
 * Wenige Studien haben sich mit demographischen Biases in Face-Based Age Inference beschäftigt `r Cite(bibliography, c( "karkkainen2019fairface", "karkkainen2021fairface"))`
 
-* Insbesondere Studien zu demographischen Biases in kommerziellen Services sind rar (umso erstaunlicher, weil Face-Based Gender Inference große öffentliche Aufmerksamkeit erhalten hat `r Cite(bibliography, c("buolamwini2018gender", "raji2019actionable"))`
+* Insbesondere <mark class="turquoise">Studien zu demographischen Biases in kommerziellen Services</mark> sind rar (umso erstaunlicher, weil Face-Based Gender Inference große öffentliche Aufmerksamkeit erhalten hat `r Cite(bibliography, c("buolamwini2018gender", "raji2019actionable"))`
 
 ---
 class: inverse, middle, center
@@ -283,15 +282,15 @@ class: inverse, middle, center
 
 .pull-left[
 
-* Benchmark kommerzieller Face Verification Services (Amazon, Megvii, Microsoft) unter Verwendung von Unconstrained Images (RQ 1, RQ 2)
+* Benchmark kommerzieller Face Verification Services (Amazon, Megvii, Microsoft) unter Verwendung von Unconstrained Images (<mark class="turquoise">RQ 1, RQ 2</mark>)
 
-* Berücksichtigung von Gender (female, male), Race (Asian, African, Caucasian, Indian) und Age (<30, 30-39, 40-49, 50+)
+* Berücksichtigung von <mark class="turquoise">Gender</mark> (female, male), <mark class="turquoise">Race</mark> (Asian, African, Caucasian, Indian) und <mark class="turquoise">Age</mark> (<30, 30-39, 40-49, 50+)</mark>
 
-* Verwendeter Datensatz: Balanced Faces in the Wild (BFW) `r Cite(bibliography, c("robinson2020face"))`
+* Verwendeter Datensatz: <mark class="turquoise">Balanced Faces in the Wild (BFW) `r Cite(bibliography, c("robinson2020face"))`</mark>
 
   * 20,000 Unconstrained Images von 800 Individuen balanciert nach Gender und Race und entsprechende Labels
   
-  * Keine Labels für Age!
+  * <mark class="turquoise">Keine Labels für Age</mark>
 
 ]
 
@@ -305,9 +304,9 @@ class: inverse, middle, center
 ## `r fontawesome::fa("vials", fill = "#c5ebd5")` Experiment 1 - Methode
 ----
 
-* Labelling von Age für alle 20,000 Bilder im Datensatz nach der Methode von `r Cite(bibliography, c("karkkainen2021fairface"))` ("Drei-Rater-Prinzip")
+* <mark class="turquoise">Labelling von Age</mark> für alle 20,000 Bilder im Datensatz nach der Methode von `r Cite(bibliography, c("karkkainen2021fairface"))`
 
-* Auswahl von Bildpaaren
+* <mark class="turquoise">Auswahl von Bildpaaren</mark>
 
   * Randomisiert unter Berücksichtigung von Cosine Distances zwischen MobileNetV2-Embeddings `r Cite(bibliography, c("sandler2018mobilenetv2"))`
   
@@ -321,13 +320,15 @@ class: inverse, middle, center
 ## `r fontawesome::fa("vials", fill = "#c5ebd5")` Experiment 1 - Methode
 ----
 
-* Vergleichs-Metriken:
+* <mark class="turquoise">Vergleichsgrößen</mark>:
 
   * False Match Rate (FMR) `r Cite(bibliography, "grother2019face")`: $FMR(T) = \frac{1}{M} \sum_{i=1}^{M} H(u_i - T)$
   
   * False Non-Match Rate (FNMR) `r Cite(bibliography, "grother2019face")`: $FNMR(T) = 1 - \frac{1}{N} \sum_{i=1}^{N} H(v_i - T)$
   
   * Equal Error Rate (EER): Wenn Decision Threshold so gewählt wird, dass die FMR gleich der FNMR ist, wird der gemeinsame Wert von FMR und FNMR als EER bezeichnet `r Cite(bibliography, "scheuermann2000usability")`
+
+* Analyse von FMRs und FNMRs auf Basis <mark class="turquoise">variierender Thresholds</mark>
   
 * Implementierung des Benchmarks, Auswertung und Visualisierung mit Python 3.8.8 `r Cite(bibliography, "py_38")` bzw. R 4.1.0 `r Cite(bibliography, "rcore2021r")`
 
@@ -363,18 +364,17 @@ image_read_pdf("img/highagg_eer_p_slides.pdf", pages = 1)
 ## `r fontawesome::fa("vials", fill = "#c5ebd5")` Experiment 1 - Ergebnisse
 ----
 
-* Nach Services: Niedrigste Fehlerraten bei Amazon, höchste Fehlerraten bei Megvii
+* Nach <mark class="turquoise">Services</mark>: Niedrigste Fehlerraten bei Amazon, höchste Fehlerraten bei Megvii
 
-* Nach dem. Gruppen:
+* Nach <mark class="turquoise">dem. Gruppen</mark>:
   * Niedrigere Fehlerraten bei Females
   * Niedrigere Fehlerraten bei Caucasians, höhere bei Asians und Africans (je nach Service)
   * Höchste Fehlerraten bei Personen unter 30 Jahren
+  * <mark class="turquoise">Intersektional</mark>: Niedrigste Fehlerraten bei älteren Causasian Males, höchste (u.a.) bei jüngeren Asian Females und älteren African Males
   
-* Biases höher in FMRs (z.B. 42 Prozentpunkte bei Amazon) im Vergleich zu FNMRs (12 Prozentpunkte bei Amazon)
+* <mark class="turquoise">Biases höher in FMRs</mark> (z.B. 42 Prozentpunkte bei Amazon) im Vergleich zu FNMRs (12 Prozentpunkte bei Amazon)
 
-* Höhe der Unterschiede zwischen Gruppen hängt stark vom gewählten Threshold ab
-
-* Intersektional: Niedrigste Fehlerraten bei älteren Causasian Males, höchste (u.a.) bei jüngeren Asian Females und älteren African Males
+* Höhe der Unterschiede zwischen Gruppen <mark class="turquoise">hängt stark vom gewählten Threshold</mark> ab
 
 ---
 class: inverse, middle, center
@@ -389,11 +389,11 @@ class: inverse, middle, center
 
 .pull-left[
 
-* Replikation des Benchmarks von Wang et al. (2019) `r Cite(bibliography, "wang2019racial")` - einziger Benchmark von kommerziellen Services (Amazon, Megvii, Micosoft) zur Face Verification hinsichtlich demografischen Biases (RQ 3)
+* <mark class="turquoise">Replikation</mark> des Benchmarks von Wang et al. `r Cite(bibliography, "wang2019racial")` - einziger Benchmark von kommerziellen Services (Amazon, Megvii, Micosoft) zur Face Verification hinsichtlich demografischen Biases (<mark class="turquoise">RQ 3</mark>)
 
-* Basierend auf dem RFW-Datensatz: Vier Gruppen nach Race (African, Asian, Caucasian, Indian)
+* Verwendeter Datensatz: <mark class="turquoise">Racial Facial in the Wild (RFW) </mark> `r Cite(bibliography, "wang2019racial")` - vier Gruppen nach <mark class="turquoise">Race</mark> (African, Asian, Caucasian, Indian)
 
-* Replikation der Bildpaare nach Wang et al. (2019) `r Cite(bibliography, "wang2019racial")`  mit 3,000 genuinen Paaren und 3,000 Imposter-Paaren pro Gruppe (24,000 Bilder insgesamt)
+* <mark class="turquoise">Replikation der Bildpaare</mark> nach Wang et al. `r Cite(bibliography, "wang2019racial")` mit 3,000 genuinen Paaren und 3,000 Imposter-Paaren pro Gruppe (24,000 Bilder insgesamt)
 
 * Implementierung des Benchmarks, Auswertung und Visualisierung mit Python 3.8.8 `r Cite(bibliography, "py_38")` bzw. R 4.1.0 `r Cite(bibliography, "rcore2021r")`
 
@@ -401,7 +401,7 @@ class: inverse, middle, center
 
 .pull-right[
 
-* Vergleichs-Metrik: Accuracy = $\frac{TP + TN}{TP + TN + FP + FN}$
+* <mark class="turquoise">Vergleichsgröße</mark>: $Accuracy =\frac{TP + TN}{TP + TN + FP + FN}$
 
   .center[
   ![:scale 85%](img/rfw_avg_combined.png)
@@ -415,13 +415,13 @@ class: inverse, middle, center
 
 .pull-left[
 
-* Im Vergleich zu Wang et al. (2019) `r Cite(bibliography, "wang2019racial")` Verbesserung der Perfromance bei Amazon und Microsoft um bis zu 23,1 Prozentpunkte (Accuracy von 98% oder mehr für alle demgrafischen Gruppen)
+* Im Vergleich zu Wang et al. `r Cite(bibliography, "wang2019racial")` <mark class="turquoise">Verbesserung der Perfromance bei Amazon und Microsoft</mark> um bis zu 23,1 Prozentpunkte (Accuracy von 98% oder mehr für alle demgrafischen Gruppen)
 
-* Im Vergleich zur Studie von Wang et al. (2019) `r Cite(bibliography, "wang2019racial")` hat sich die Genauigkeit von Megvii nicht wesentlich verbessert 
+* Im Vergleich zur Studie von Wang et al. `r Cite(bibliography, "wang2019racial")` hat sich die Genauigkeit von <mark class="turquoise">Megvii nicht wesentlich verbessert</mark>
         
-* Die Performance aller Services ist am besten für Caucasians. Amazon und Microsoft erzielen die schlechtesten Ergebnisse für Asians und Megvii für Africans
+* Die Performance aller Services ist <mark class="turquoise">am besten für Caucasians</mark>. Amazon und Microsoft erzielen die schlechtesten Ergebnisse für Asians und Megvii für Africans
         
-* Auch Biases für Amazon und Microsoft erscheinen reduziert (größter Unterschied zwischen Gruppen: 1,0 Prozentpunkte)
+* Auch <mark class="turquoise">Biases</mark> für Amazon und Microsoft erscheinen <mark class="turquoise">reduziert</mark> (größter Unterschied zwischen Gruppen: 1,0 Prozentpunkte)
 
 ]
 
@@ -447,14 +447,14 @@ class: inverse, middle, center
 
 .pull-left[
 
-* Benchmark kommerzieller Services für Face-Based Age Inference (Amazon, Megvii, Microsoft) unter Verwendung von Unconstrained Images (RQ 4, RQ 5)
+* <mark class="turquoise">Benchmark kommerzieller Services für Face-Based Age Inference </mark> (Amazon, Megvii, Microsoft) unter Verwendung von Unconstrained Images (RQ 4, RQ 5)
 
-* Berücksichtigung von Gender (Female, Male), Race (Asian, African, Caucasian, Indian) und Alter (0-9, 10-19, 20-29, 30-39, 40-49, 50-59, 60-69)
+* Berücksichtigung von <mark class="turquoise">Gender</mark> (Female, Male), <mark class="turquoise">Race</mark> (Asian, African, Caucasian, Indian) und <mark class="turquoise">Alter</mark> (0-9, 10-19, 20-29, 30-39, 40-49, 50-59, 60-69)
 
-* Verwendeter Datensatz: Fairface `r Cite(bibliography, c("karkkainen2019fairface", "karkkainen2021fairface"))`: 108,000 Unconstrained Images mit Labes für Gender, Race and Age
+* Verwendeter Datensatz: <mark class="turquoise">Fairface</mark> `r Cite(bibliography, c("karkkainen2019fairface", "karkkainen2021fairface"))`: 108,000 Unconstrained Images mit Labes für Gender, Race and Age
 
 
-* Randomisierte Auswahl von 175 Bilder pro Subgruppen (nach Gender, Race und Age)
+* <mark class="turquoise">Randomisierte Auswahl von 175 Bildern pro intersektionaler Subgruppe</mark>
 
 * Implementierung des Benchmarks, Auswertung und Visualisierung mit Python 3.8.8 `r Cite(bibliography, "py_38")` bzw. R 4.1.0 `r Cite(bibliography, "rcore2021r")`
 
@@ -462,7 +462,7 @@ class: inverse, middle, center
 
 .pull-right[
 
-* Vergleichs-Metrik: Mean Absolute Error (MAE) `r Cite(bibliography, "geron2019hands")`: $MAE = \frac{1}{M} \sum_{i=1}^{M} |(\hat{y_i} - y_i)$
+* <mark class="turquoise">Vergleichsgröße</mark>: Mean Absolute Error (MAE) `r Cite(bibliography, "geron2019hands")`: $MAE = \frac{1}{M} \sum_{i=1}^{M} |(\hat{y_i} - y_i)$
 
   .center[
   ![:scale 80%](img/ff_avg_imgs_2.png)
@@ -499,17 +499,17 @@ image_read_pdf("img/ff_highagg_p.pdf", pages = 1)
 ## `r fontawesome::fa("vials", fill = "#c5ebd5")` Experiment 3 - Ergebnisse
 ----
 
-* Nach Services: Konsistent niedrigster MAE für Microsoft, höchster für Megvii
+* Nach <mark class="turquoise">Services</mark>: Konsistent niedrigster MAE für Microsoft, höchster für Megvii
 
-* Nach dem. Gruppen:
+* Nach <mark class="turquoise">dem. Gruppen</mark>:
   * Niedrigerer MAE bei Males
   * Beste Performance für Amazon bei Causasians, Microsoft bei Africans, Megvii bei Asians
   * MAEs am niedrigsten bei älteren Menschen (Amazon, Microsoft) oder bei besonders jungen Altersgruppen (Megvii)
-  
-* Größte Unterschiede zwischen dem. Gruppen bei Amazon: 402% bzw. 13.78 MAE-Units
-
-* Intersektional: in Altersgruppen, in denen Amazon und Microsoft schlecht abschneiden (z. B. 60-69 Jahre), sind MAEs systematisch am niedrigsten
+  * Intersektional: in Altersgruppen, in denen Amazon und Microsoft schlecht abschneiden (z. B. 60-69 Jahre), sind MAEs systematisch am niedrigsten
 für Caucasian Males. Ähnlich bei Megvii: MAEs in jungen Altersgruppen besonders besonders niedrig für Asian Males
+** Größte Unterschiede zwischen dem. Gruppen bei Amazon: 403% bzw. 13.78 MAE-Einheiten [4.55 (Asian Females 20-29); 18.33 (African Females 60-69)]
+
+* Muster demographischer Biases heterogener zwischen Services
 
 ---
 class: inverse, middle, center
@@ -522,15 +522,15 @@ class: inverse, middle, center
 ## `r fontawesome::fa("comment", fill = "#c5ebd5")` Einordnung der Ergebnisse
 ----
 
-* Allgemein: Ergebnisse sind eine Momentaufnahme und die Vergleichbarkeit mit anderen Studien ist nicht immer gegeben (spezifische Analyse und rasante Weiterentwicklung des Felds)
+* Allgemein: Ergebnisse sind eine <mark class="turquoise">Momentaufnahme</mark> und die Vergleichbarkeit mit anderen Studien ist nicht in jedem Fall vollends gegeben (spezifische Analyse und rasante Weiterentwicklung des Felds)
 
-* Face Verification
+* <mark class="turquoise">Face Verification</mark>
   * Ergebnisse zu Alter und Race decken sich überwiegend mit anderen Studien (z.B. `r Cite(bibliography, c("wang2019racial", "grother2019face", "el2016face"))`)
   * Ergebnisse zu Gender im Gegensatz zu anderen Studien (mehrere Erklärungen denkbar)
   * Replikation von `r Cite(bibliography, "wang2019racial")` zeigt, dass sich kommerzielle Services (von Microsoft und Amazon) jedenfalls verbessert haben
-  * Höhe von Gruppenunterschiede tendeziell niedriger im Vergleich zu anderen Studien `r Cite(bibliography, c("grother2019face"))`
+  * Außmaß von Gruppenunterschieden tendeziell niedriger im Vergleich zu anderen Studien `r Cite(bibliography, c("grother2019face"))`
   
-* Face-Based Age Inference
+* <mark class="turquoise">Face-Based Age Inference</mark>
   * Wenige Ergebnisse zu demografischen Biases aus vorherigen Studien
   * Größere Unterschiede zwischen verschiedenen Altersgruppen im Vergleich zu Gruppen nach Gender und Race konsistent zu `r Cite(bibliography, c("karkkainen2019fairface"))`
   * "Other-race"-Effekt `r Cite(bibliography, c("phillips2011other"))`
@@ -542,13 +542,15 @@ class: inverse, middle, center
 
 * Berücksichtigung nur bestimmter demografischer Dimensionen und Gruppen (z.B. manche Altersgruppen nicht oder kaum repärsentiert)
 
+* Experiment 2: Ausgehend von Replikation nur Accuracy als Vergleichsgröße berücksichtigt
+
 * Weitere Einflussfaktoren wie Schärfe oder Belichtung lagen nicht im Fokus der Arbeit
 
 * Möglicherweise "Noisy Labels"
 
 * Analyse von Detection Errors lag nicht im Fokus der Arbiet
 
-* Face Verification vs Face Search
+* Face Verification versus Face Search
 ---
 
 class: inverse, middle, center
@@ -562,13 +564,13 @@ class: inverse, middle, center
 ## `r fontawesome::fa("brain", fill = "#c5ebd5")` Schlussfolgerung
 ----
 
-* Verbesserung kommerzieller Services für Face Verification über die Zeit - aber systematische demographische Biases immer noch vorhanden (z.B. bessere Performance bei Caucasians)
+* <mark class="turquoise">Verbesserung kommerzieller Services</mark> für Face Verification über die Zeit - aber systematische <mark class="turquoise">demographische Biases immer noch vorhanden</mark> (z.B. bessere Performance bei Caucasians)
 
-* Auch Unterschiede zwischen demografischen Gruppen bei Face-Based Age Inference, die u.a. auf Biases in den Trainingsdaten hinweisen
+* Auch <mark class="turquoise">Unterschiede zwischen demografischen Gruppen bei Face-Based Age Inference</mark>, die u.a. auf Biases in den Trainingsdaten hinweisen
 
-* Trotz Verbesserungen der Services ist ein reflektierter Einsatz im Bewusstsein über deren Schwächen und Limitationen gefordert
+* Trotz Verbesserungen der Services ist ein <mark class="turquoise">reflektierter Einsatz im Bewusstsein über deren Schwächen und Limitationen gefordert</mark>
 
-* Benchmarks von (kommerziellen) Machine Learning-Modellen bleibt relevant, um einen fairen, transparenten Einsatz dieser Technologien langfristig sicherzustellen - Ergebnisse der Arbeit können hierbei als Referenzpunkt
+* Benchmarks von (kommerziellen) Machine Learning-Modellen bleiben relevant, um einen <mark class="turquoise">fairen, transparenten Einsatz dieser Technologien</mark> langfristig sicherzustellen - Ergebnisse der Arbeit können hierbei als <mark class="turquoise">Referenzpunkt</mark> dienen
 
 ---
 # Literatur
