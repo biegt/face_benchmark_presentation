@@ -20,22 +20,12 @@ output:
       beforeInit: "macros.js"
 ---
 
-```{r meta, echo=FALSE, warning=FALSE}
-library(metathis)
-meta() %>%
-  meta_general(
-    description = "Defensio",
-    generator = "xaringan and remark.js"
-  ) %>% 
-  meta_social(
-    og_author = "Till Bieg",
-    twitter_card_type = "summary_large_image",
-    twitter_creator = "@abc"
-  )
-```
-
 ```{r configuration, include = FALSE}
+# The slide layout is inspired by https://github.com/spcanelon/xaringan-rladies-xalapa 
+# Many thanks to @spcanelon for providing many cool ideas and templates
+
 library(knitr)
+library(metathis)
 library(cowplot)
 library(fontawesome)
 library(emo)
@@ -79,45 +69,33 @@ BibOptions(
 bibliography <- ReadBib("./bibliography.bib", check = FALSE)
 ```
 
-class: right, middle, inverse, titular
-background-image: url(img/jacarandas.jpg)
-background-size: contain
-background-position: -200% 10%
+```{r meta, echo=FALSE, warning=FALSE}
+meta() %>%
+  meta_general(
+    description = "Defensio",
+    generator = "xaringan and remark.js"
+  ) %>% 
+  meta_social(
+    og_author = "Till Bieg",
+    twitter_card_type = "summary_large_image",
+    twitter_creator = "@abc"
+  )
+```
 
-<!--<img style="border-radius: 50%;" src="https://raw.githubusercontent.com/spcanelon/xaringan-rladies-xalapa/master/diapositivas/img/rladies-xalapa.jpg"
-width="150px"/>-->
+
+class: right, middle, inverse, titular
+background-image: url(img/title-background.png)
+background-size: contain
+background-position: -20% 0%
+
+<!--<img style="border-radius: 50%;" src="" width="150px"/>-->
 <img src="img/fhwn-logo.png" width="125px"/>
-# `r rmarkdown::metadata$title` 
+## <div style="width: 80%; margin-left: 20%;"> `r rmarkdown::metadata$title` </div>
 ## `r rmarkdown::metadata$subtitle`
 ### `r rmarkdown::metadata$author`
 ### `r rmarkdown::metadata$date`
 
-`made with R and xaringan -` [`r fontawesome::fa("github")` bit.ly/face-benchmark](https://bit.ly/face-benchmark) 
-
----
-layout: false
-class: inverse, middle, center
-
-# Über mich
-
-<!--img style="border-radius: 50%;" src="https://https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/RStudio_logo_flat.svg/768px-RStudio_logo_flat.svg.png" width="150px"/>-->
-
-```{r}
-# TODO:
-  # Bilder ergänzen, wo sinnvoll 
-    # (Konzeptgrafiken für Age-Inference und Face Verification)
-    # Hintergrundbid anpassen
-    # Portraitbild anpassen
-  # Vortrag / Folien mit Flora durchgehen
-  # Projekt cleanen und auf Github übertragen
-```
-
-
-## Till Bieg `r emo::ji("germany")`
-
-### AIT Austrian Institute of Technology
-
-[`r fontawesome::fa("github")` @biegt](https://github.com/biegt)
+[`r fontawesome::fa("github")` bit.ly/face-benchmark](https://bit.ly/face-benchmark) 
 
 ---
 class: center, middle
@@ -125,8 +103,6 @@ class: center, middle
 # Überblick
 
 ----
-
---
 
 <p style = "color: #4cbfac; line-height: 200%; size: 12;"> Einführung <br>
 Theoretischer Hintergrund <br>
@@ -224,9 +200,21 @@ class: inverse, middle, center
 ---
 ## `r fontawesome::fa("book", fill = "#c5ebd5")` Theoretischer Hintergrund - Demographische Biases in Face Verification
 ----
+
+.pull-left[
 * <mark class="turquoise">Face Verification</mark>: Algorithmus, der versucht zu erkennen, ob zwei Bilder eines Gesichts zu derselben Person gehören `r Cite(bibliography, "sun2013hypird")`
 
 * Hohe Relevanz und viele Anwendungsfälle (Strafverfolgung, Authentifzierung, etc.) `r Cite(bibliography, c("interpol_2021", "nyt_2021"))`
+
+]
+
+.pull-right[
+![:scale 75%](img/face-verification.png)
+]
+
+---
+## `r fontawesome::fa("book", fill = "#c5ebd5")` Theoretischer Hintergrund - Demographische Biases in Face Verification
+----
 
 * Studien haben bereits <mark class="turquoise">demograpische Biases</mark> in (kommerzieller) Face Verification gefunden `r Cite(bibliography, c("hupont2019demogpairs", "grother2019face", "wang2019racial", "robinson2020face", "el2016face", "cavazos2020accuracy", "krish2019characterizing"))`, z.B.
   * Modelle sind am genauesten bei Males, Caucasians oder Personen mittleren Alters
@@ -237,17 +225,25 @@ class: inverse, middle, center
   * Benchmarks kommerzieller Services für Face Verification bei "Unconstrained Images" unter Berücksichtigung von Gender, Race und Age
   * Vergleich kommerzieller Service für Face Verification bei "Unconstrained Images" über die Zeit
 
+
+
 ---
 ## `r fontawesome::fa("book", fill = "#c5ebd5")` Theoretischer Hintergrund - Demographische Biases in Face-Based Age Inference
 ----
 
+.pull-left[
 * <mark class="turquoise">Face-Based Age Inference</mark>: Schätzung des Alters einer Person auf der Grundlage eines Bildes ihres Gesichts `r Cite(bibliography, c("deng2021multifeature"))`
 
 * Viele aktuelle Forschungsarbeiten beschäftigen sich mit der Verbeserung von Face-Based Age Inference `r Cite(bibliography, c("akhand2020human", "karkkainen2019fairface", "karkkainen2021fairface", "guehairia2020feature", "rahman2020human", "bekhouche2020comparative", "gong2020jointly", "agbo2019face"))`
 
 * Wenige Studien haben sich mit demographischen Biases in Face-Based Age Inference beschäftigt `r Cite(bibliography, c( "karkkainen2019fairface", "karkkainen2021fairface"))`
 
-* Insbesondere <mark class="turquoise">Studien zu demographischen Biases in kommerziellen Services</mark> sind rar (umso erstaunlicher, weil Face-Based Gender Inference große öffentliche Aufmerksamkeit erhalten hat `r Cite(bibliography, c("buolamwini2018gender", "raji2019actionable"))`
+* Insbesondere <mark class="turquoise">Studien zu demographischen Biases in kommerziellen Services</mark> sind rar (erstaunlich, weil Face-Based Gender Inference große öffentliche Aufmerksamkeit erhalten hat `r Cite(bibliography, c("buolamwini2018gender", "raji2019actionable"))`
+]
+
+.pull-right[
+![:scale 90%](img/face-based-age-inference.png)
+]
 
 ---
 class: inverse, middle, center
@@ -333,12 +329,12 @@ class: inverse, middle, center
 * Implementierung des Benchmarks, Auswertung und Visualisierung mit Python 3.8.8 `r Cite(bibliography, "py_38")` bzw. R 4.1.0 `r Cite(bibliography, "rcore2021r")`
 
 ---
-class: middle, center
+class: middle
 ## `r fontawesome::fa("vials", fill = "#c5ebd5")` Experiment 1 - Ergebnisse
 ----
 
 ```{r, echo = FALSE, out.width = '90%'}
-image_read_pdf("img/nonagg_eer_p.pdf", pages = 1)
+image_read_pdf("img/bfw_nonagg_eer_p.pdf", pages = 1)
 ```
 
 ---
@@ -347,7 +343,7 @@ image_read_pdf("img/nonagg_eer_p.pdf", pages = 1)
 ----
 
 ```{r, echo = FALSE, out.width = '80%'}
-image_read_pdf("img/midagg_eer_p.pdf", pages = 1)
+image_read_pdf("img/bfw_midagg_eer_p.pdf", pages = 1)
 ```
 
 ---
@@ -356,7 +352,7 @@ image_read_pdf("img/midagg_eer_p.pdf", pages = 1)
 ----
 
 ```{r, echo = FALSE, out.width = '90%'}
-image_read_pdf("img/highagg_eer_p_slides.pdf", pages = 1)
+image_read_pdf("img/bfw_highagg_eer_p.pdf", pages = 1)
 ```
 
 ---
@@ -404,7 +400,7 @@ class: inverse, middle, center
 * <mark class="turquoise">Vergleichsgröße</mark>: $Accuracy =\frac{TP + TN}{TP + TN + FP + FN}$
 
   .center[
-  ![:scale 85%](img/rfw_avg_combined.png)
+  ![:scale 85%](img/rfw_avg_imgs.png)
   ]
 
 ]
@@ -428,7 +424,7 @@ class: inverse, middle, center
 .pull-right[
 
 ```{r, echo = FALSE}
-fig_svg <- ggdraw() + draw_image("img/acc_change_p.svg")
+fig_svg <- ggdraw() + draw_image("img/rfw_change_p.svg")
 plot(fig_svg)
 ```
 
@@ -465,13 +461,13 @@ class: inverse, middle, center
 * <mark class="turquoise">Vergleichsgröße</mark>: Mean Absolute Error (MAE) `r Cite(bibliography, "geron2019hands")`: $MAE = \frac{1}{M} \sum_{i=1}^{M} |(\hat{y_i} - y_i)$
 
   .center[
-  ![:scale 80%](img/ff_avg_imgs_2.png)
+  ![:scale 80%](img/ff_avg_imgs.png)
   ]
 
 ]
 
 ---
-class: middle, center
+class: middle
 ## `r fontawesome::fa("vials", fill = "#c5ebd5")` Experiment 3 - Ergebnisse
 ----
 
@@ -484,7 +480,7 @@ image_read_pdf("img/ff_nonagg_p.pdf", pages = 1)
 ----
 
 ```{r, echo = FALSE, out.width = '68%'}
-image_read_pdf("img/ff_midagg_p_s4_slides.pdf", pages = 1)
+image_read_pdf("img/ff_midagg_p.pdf", pages = 1)
 ```
 
 ---
@@ -507,7 +503,7 @@ image_read_pdf("img/ff_highagg_p.pdf", pages = 1)
   * MAEs am niedrigsten bei älteren Menschen (Amazon, Microsoft) oder bei besonders jungen Altersgruppen (Megvii)
   * Intersektional: in Altersgruppen, in denen Amazon und Microsoft schlecht abschneiden (z. B. 60-69 Jahre), sind MAEs systematisch am niedrigsten
 für Caucasian Males. Ähnlich bei Megvii: MAEs in jungen Altersgruppen besonders besonders niedrig für Asian Males
-** Größte Unterschiede zwischen dem. Gruppen bei Amazon: 403% bzw. 13.78 MAE-Einheiten [4.55 (Asian Females 20-29); 18.33 (African Females 60-69)]
+* Größte Unterschiede zwischen dem. Gruppen bei Amazon: 403% bzw. 13.78 MAE-Einheiten [4.55 (Asian Females 20-29); 18.33 (African Females 60-69)]
 
 * Muster demographischer Biases heterogener zwischen Services
 
