@@ -82,15 +82,13 @@ meta() %>%
   )
 ```
 
-
 class: right, middle, inverse, titular
 background-image: url(img/title-background.png)
 background-size: contain
 background-position: -20% 0%
 
-<!--<img style="border-radius: 50%;" src="" width="150px"/>-->
 <img src="img/fhwn-logo.png" width="125px"/>
-## <div style="width: 80%; margin-left: 20%;"> `r rmarkdown::metadata$title` </div>
+## <div class="title"> `r rmarkdown::metadata$title` </div>
 ## `r rmarkdown::metadata$subtitle`
 ### `r rmarkdown::metadata$author`
 ### `r rmarkdown::metadata$date`

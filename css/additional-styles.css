@@ -33,6 +33,11 @@ mark.turquoise {
   font-weight: bold;
 }
 
+div.title {
+  width: 80%;
+  margin-left: 20%;
+}
+
 a {
   border-bottom:      3px solid var(--turquoise-clear);
   line-height:        2rem;
