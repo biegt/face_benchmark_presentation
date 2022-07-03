@@ -131,7 +131,7 @@ class: inverse, middle, center
   * Vergleich kommerzieller Service für Face Verification bei "Unconstrained Images" über die Zeit
   * Benchmarks kommerzieller Services für Face-Based Age Inference unter Berücksichtigung von Gender, Race und Age
 
-* <mark class="turquoise">Ziel der Arbeit:</mark> Untersuchung dieser Forschungslücken, um Biases aufzudecken, Transparenz zu unterstützen und die empirische Grundlage für Entscheidungen zum kommerziellen Einsatz von AI zu erweitern
+* <mark class="turquoise">Ziel der Arbeit:</mark> Untersuchung dieser Forschungslücken, um Biases aufzudecken, Transparenz zu unterstützen und die empirische Grundlage für Entscheidungen zum Einsatz von Artifical Intelligence zu erweitern
 
 ---
 class: inverse, middle, center
@@ -143,7 +143,7 @@ class: inverse, middle, center
 ---
 ## `r fontawesome::fa("book", fill = "#c5ebd5")` Theoretischer Hintergrund - Fairness in Machine Learning 
 ----
-* Moderne Machine Learning-Applikationen (Automated Facial Analysis und darüber hinaus) basierend oft auf großen Datenmengen `r Cite(bibliography,  c("francois2017deep", "cavazos2020accuracy"))`
+* Moderne Machine Learning-Applikationen (Automated Facial Analysis und darüber hinaus) basieren oft auf großen Datenmengen `r Cite(bibliography,  c("francois2017deep", "cavazos2020accuracy"))`
 
 * <mark class="turquoise">Biases</mark> im Entwicklungsprozess (z.B. nicht ausgewogene Trainingsdaten) können sich in Biases in den jeweiligen Modellen übertragen `r Cite(bibliography, c("maity2020there", "cavazos2020accuracy", "klare2012face", "kortylewski2019analyzing", "zhang2018mitigating"))`
 
@@ -214,7 +214,7 @@ class: inverse, middle, center
 ## `r fontawesome::fa("book", fill = "#c5ebd5")` Theoretischer Hintergrund - Demographische Biases in Face Verification
 ----
 
-* Studien haben bereits <mark class="turquoise">demograpische Biases</mark> in (kommerzieller) Face Verification gefunden `r Cite(bibliography, c("hupont2019demogpairs", "grother2019face", "wang2019racial", "robinson2020face", "el2016face", "cavazos2020accuracy", "krish2019characterizing"))`, z.B.
+* Studien haben bereits <mark class="turquoise">demograpische Biases</mark> in (kommerzieller) Face Verification gefunden `r Cite(bibliography, c("hupont2019demogpairs", "grother2019face", "wang2019racial", "robinson2020face", "el2016face", "cavazos2020accuracy", "krish2019characterizing"))`, z.B.:
   * Modelle sind am genauesten bei Males, Caucasians oder Personen mittleren Alters
   * Modellgenauigkeit ist schlechter bei African und Asian Females oder bei jungen Menschen
   
@@ -236,7 +236,7 @@ class: inverse, middle, center
 
 * Wenige Studien haben sich mit demographischen Biases in Face-Based Age Inference beschäftigt `r Cite(bibliography, c( "karkkainen2019fairface", "karkkainen2021fairface"))`
 
-* Insbesondere <mark class="turquoise">Studien zu demographischen Biases in kommerziellen Services</mark> sind rar (erstaunlich, weil Face-Based Gender Inference große öffentliche Aufmerksamkeit erhalten hat `r Cite(bibliography, c("buolamwini2018gender", "raji2019actionable"))`
+* Insbesondere <mark class="turquoise">Studien zu demographischen Biases in kommerziellen Services</mark> sind selten (erstaunlich, weil Face-Based Gender Inference große öffentliche Aufmerksamkeit erhalten hat `r Cite(bibliography, c("buolamwini2018gender", "raji2019actionable"))`
 ]
 
 .pull-right[
@@ -255,13 +255,13 @@ class: inverse, middle, center
 ----
 RQ 1: Wie unterscheidet sich die Performance kommerzieller Services für Face Verification unter Verwendung von Unconstrained Images hinsichtlich demografischer Gruppen (Gender, Race und Age)?
 
-RQ 2: Wie unterscheiden sich kommerzielle Services für Face Verification unter Verwendung von Unconstrained Images untereinander? 
+RQ 2: Wie unterscheiden sich kommerzielle Services für Face Verification hinsichtlich ihrer Performance unter Verwendung von Unconstrained Images?
 
-RQ 3: Wie hat sich die Performance kommerzieller Services für Face Verification unter Verwendung von Unconstrained Images im Vergleich zu früheren Benchmarks verändert?
+RQ 3: Wie hat sich die Performance kommerzieller Services für Face Verification unter Verwendung von Unconstrained Images im Vergleich zu früheren Benchmarks verändert? 
 
 RQ 4: Wie unterscheidet sich die Performance kommerzieller Services für Face-Based Age Inference (unter Verwendung von Unconstrained Images) hinsichtlich demografischer Gruppen (Gender, Race und Age)?
 
-RQ 5: Wie unterscheiden sich kommerzielle Services für Face-Based Age Inference unter Verwendung von Unconstrained Images untereinander? (Vergleich zwischen Services)
+RQ 5: Wie unterscheiden sich kommerzielle Services für Face-Based Age Inference hinsichtlich ihrer Performance (unter Verwendung von Unconstrained Images)?
 
 ---
 class: inverse, middle, center
@@ -278,7 +278,7 @@ class: inverse, middle, center
 
 * Benchmark kommerzieller Face Verification Services (Amazon, Megvii, Microsoft) unter Verwendung von Unconstrained Images (<mark class="turquoise">RQ 1, RQ 2</mark>)
 
-* Berücksichtigung von <mark class="turquoise">Gender</mark> (female, male), <mark class="turquoise">Race</mark> (Asian, African, Caucasian, Indian) und <mark class="turquoise">Age</mark> (<30, 30-39, 40-49, 50+)</mark>
+* Berücksichtigung von <mark class="turquoise">Gender</mark> (Female, Male), <mark class="turquoise">Race</mark> (African, Asian, Caucasian, Indian) und <mark class="turquoise">Age</mark> (<30, 30-39, 40-49, 50+)</mark>
 
 * Verwendeter Datensatz: <mark class="turquoise">Balanced Faces in the Wild (BFW) `r Cite(bibliography, c("robinson2020face"))`</mark>
 
@@ -308,7 +308,7 @@ class: inverse, middle, center
   
   * 150 Genuine Pairs und 150 Imposter Pairs pro Subgruppe
   
-  * Limitation: Bestimmte Altersgruppen stark unterrepräsentiert im Datensatz, daher nicht immer alle 150 Paare pro Gruppe
+  * Limitation: Bestimmte Altersgruppen stark unterrepräsentiert im Datensatz, daher in einigen Fälle keine 150 bzw. 300 Paare pro Gruppe
   
 ---
 ## `r fontawesome::fa("vials", fill = "#c5ebd5")` Experiment 1 - Methode
@@ -500,10 +500,10 @@ image_read_pdf("img/ff_highagg_p.pdf", pages = 1)
   * Beste Performance für Amazon bei Causasians, Microsoft bei Africans, Megvii bei Asians
   * MAEs am niedrigsten bei älteren Menschen (Amazon, Microsoft) oder bei besonders jungen Altersgruppen (Megvii)
   * Intersektional: in Altersgruppen, in denen Amazon und Microsoft schlecht abschneiden (z. B. 60-69 Jahre), sind MAEs systematisch am niedrigsten
-für Caucasian Males. Ähnlich bei Megvii: MAEs in jungen Altersgruppen besonders besonders niedrig für Asian Males
+für Caucasian Males. Ähnlich bei Megvii: MAEs in jungen Altersgruppen besonders niedrig für Asian Males
 * Größte Unterschiede zwischen dem. Gruppen bei Amazon: 403% bzw. 13.78 MAE-Einheiten [4.55 (Asian Females 20-29); 18.33 (African Females 60-69)]
 
-* Muster demographischer Biases heterogener zwischen Services
+* Muster demographischer Biases tendenziell heterogen zwischen Services
 
 ---
 class: inverse, middle, center
@@ -522,7 +522,7 @@ class: inverse, middle, center
   * Ergebnisse zu Alter und Race decken sich überwiegend mit anderen Studien (z.B. `r Cite(bibliography, c("wang2019racial", "grother2019face", "el2016face"))`)
   * Ergebnisse zu Gender im Gegensatz zu anderen Studien (mehrere Erklärungen denkbar)
   * Replikation von `r Cite(bibliography, "wang2019racial")` zeigt, dass sich kommerzielle Services (von Microsoft und Amazon) jedenfalls verbessert haben
-  * Außmaß von Gruppenunterschieden tendeziell niedriger im Vergleich zu anderen Studien `r Cite(bibliography, c("grother2019face"))`
+  * Ausmaß von Gruppenunterschieden tendeziell niedriger im Vergleich zu anderen Studien `r Cite(bibliography, c("grother2019face"))`
   
 * <mark class="turquoise">Face-Based Age Inference</mark>
   * Wenige Ergebnisse zu demografischen Biases aus vorherigen Studien
@@ -532,11 +532,11 @@ class: inverse, middle, center
 ---
 ## `r fontawesome::fa("comment", fill = "#c5ebd5")` Limitationen
 ----
-* Stichprobengröße der intersektionalen Subgruppen (Repräsentativität, Größe der Schwankungsbreite, Untersuchung niedriger Fehlerlevel)
+* Stichprobengröße der intersektionalen Subgruppen (Repräsentativität, Ausmaß der Schwankungsbreite, Untersuchung niedriger Fehlerlevel)
 
-* Berücksichtigung nur bestimmter demografischer Dimensionen und Gruppen (z.B. manche Altersgruppen nicht oder kaum repärsentiert)
+* Berücksichtigung nur bestimmter demografischer Dimensionen und Gruppen (z.B. manche Altersgruppen nicht oder kaum reprärsentiert)
 
-* Experiment 2: Ausgehend von Replikation nur Accuracy als Vergleichsgröße berücksichtigt
+* In Experiment 2 ausgehend von Replikation nur Accuracy als Vergleichsgröße berücksichtigt
 
 * Weitere Einflussfaktoren wie Schärfe oder Belichtung lagen nicht im Fokus der Arbeit
 
@@ -560,7 +560,7 @@ class: inverse, middle, center
 
 * <mark class="turquoise">Verbesserung kommerzieller Services</mark> für Face Verification über die Zeit - aber systematische <mark class="turquoise">demographische Biases immer noch vorhanden</mark> (z.B. bessere Performance bei Caucasians)
 
-* Auch <mark class="turquoise">Unterschiede zwischen demografischen Gruppen bei Face-Based Age Inference</mark>, die u.a. auf Biases in den Trainingsdaten hinweisen
+* Auch eindeutige <mark class="turquoise">Unterschiede zwischen demografischen Gruppen bei Face-Based Age Inference</mark>, die auf Biases in den Trainingsdaten hinweisen
 
 * Trotz Verbesserungen der Services ist ein <mark class="turquoise">reflektierter Einsatz im Bewusstsein über deren Schwächen und Limitationen gefordert</mark>
 
