@@ -1,7 +1,7 @@
 ---
 title: "Cross-Demographic Benchmarking of Commercial Services For Automated Facial Analysis Using Unconstrained Images"
 author: "Till Bieg"
-date: "Juni 2022"
+date: "Juli 2022"
 output:
   xaringan::moon_reader:
     css: 
@@ -236,7 +236,7 @@ class: inverse, middle, center
 
 * Wenige Studien haben sich mit demographischen Biases in Face-Based Age Inference beschäftigt `r Cite(bibliography, c( "karkkainen2019fairface", "karkkainen2021fairface"))`
 
-* Insbesondere <mark class="turquoise">Studien zu demographischen Biases in kommerziellen Services</mark> sind selten (erstaunlich, weil Face-Based Gender Inference große öffentliche Aufmerksamkeit erhalten hat `r Cite(bibliography, c("buolamwini2018gender", "raji2019actionable"))`
+* Insbesondere <mark class="turquoise">Studien zu demographischen Biases in kommerziellen Services</mark> sind selten (erstaunlich, weil Face-Based Gender Inference große öffentliche Aufmerksamkeit erhalten hat `r Cite(bibliography, c("buolamwini2018gender", "raji2019actionable"))`)
 ]
 
 .pull-right[
@@ -298,7 +298,7 @@ class: inverse, middle, center
 ## `r fontawesome::fa("vials", fill = "#c5ebd5")` Experiment 1 - Methode
 ----
 
-* <mark class="turquoise">Labelling von Age</mark> für alle 20,000 Bilder im Datensatz nach der Methode von `r Cite(bibliography, c("karkkainen2021fairface"))`
+* <mark class="turquoise">Labelling von Age</mark> für alle 20,000 Bilder im Datensatz nach der Methode von Kärkkäinen und Joo `r Cite(bibliography, c("karkkainen2021fairface"))`
 
 * <mark class="turquoise">Auswahl von Bildpaaren</mark>
 
@@ -445,7 +445,7 @@ class: inverse, middle, center
 
 * Berücksichtigung von <mark class="turquoise">Gender</mark> (Female, Male), <mark class="turquoise">Race</mark> (Asian, African, Caucasian, Indian) und <mark class="turquoise">Alter</mark> (0-9, 10-19, 20-29, 30-39, 40-49, 50-59, 60-69)
 
-* Verwendeter Datensatz: <mark class="turquoise">Fairface</mark> `r Cite(bibliography, c("karkkainen2019fairface", "karkkainen2021fairface"))`: 108,000 Unconstrained Images mit Labes für Gender, Race and Age
+* Verwendeter Datensatz: <mark class="turquoise">Fairface</mark> `r Cite(bibliography, c("karkkainen2019fairface", "karkkainen2021fairface"))`: 108,000 Unconstrained Images mit Labels für Gender, Race und Age
 
 
 * <mark class="turquoise">Randomisierte Auswahl von 175 Bildern pro intersektionaler Subgruppe</mark>
@@ -498,7 +498,7 @@ image_read_pdf("img/ff_highagg_p.pdf", pages = 1)
 * Nach <mark class="turquoise">dem. Gruppen</mark>:
   * Niedrigerer MAE bei Males
   * Beste Performance für Amazon bei Causasians, Microsoft bei Africans, Megvii bei Asians
-  * MAEs am niedrigsten bei älteren Menschen (Amazon, Microsoft) oder bei besonders jungen Altersgruppen (Megvii)
+  * MAEs am niedrigsten bei älteren Menschen (Megvii) oder bei besonders jungen Altersgruppen (Amazon, Microsoft)
   * Intersektional: in Altersgruppen, in denen Amazon und Microsoft schlecht abschneiden (z. B. 60-69 Jahre), sind MAEs systematisch am niedrigsten
 für Caucasian Males. Ähnlich bei Megvii: MAEs in jungen Altersgruppen besonders niedrig für Asian Males
 * Größte Unterschiede zwischen dem. Gruppen bei Amazon: 403% bzw. 13.78 MAE-Einheiten [4.55 (Asian Females 20-29); 18.33 (African Females 60-69)]
@@ -542,7 +542,7 @@ class: inverse, middle, center
 
 * Möglicherweise "Noisy Labels"
 
-* Analyse von Detection Errors lag nicht im Fokus der Arbiet
+* Analyse von Detection Errors lag nicht im Fokus der Arbeit
 
 * Face Verification versus Face Search
 ---
